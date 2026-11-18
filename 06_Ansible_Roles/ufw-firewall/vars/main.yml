@@ -1,0 +1,7 @@
+#SPDX-License-Identifier: MIT-0
+# vars file for ufw-firewall
+
+---
+firewall_package_name: ufw
+firewall_port: '80'
+firewall_protocol: tcp

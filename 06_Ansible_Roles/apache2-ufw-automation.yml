@@ -1,0 +1,9 @@
+---
+- name: Install Apache2 and Configure UFW Firewall
+  hosts: all
+  become: true
+
+  roles:
+    - apache2_setup
+    - ufw-firewall
+    

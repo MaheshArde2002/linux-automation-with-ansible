@@ -1,0 +1,32 @@
+---
+- name: Linux User Security Management
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Set password for Sagar
+      user:
+        name: Sagar
+        password: "{{ 'Sagar@123' | password_hash('sha512') }}"
+
+    - name: Create development directory
+      file:
+        path: /opt/development
+        state: directory
+
+    - name: Set directory owner and group
+      file:
+        path: /opt/development
+        owner: Sagar
+        group: admin
+
+    - name: Set directory permissions
+      file:
+        path: /opt/development
+        mode: '0770'
+
+    - name: Delete User Ankit
+      user:
+        name: Ankit
+        state: absent
+        remove: yes

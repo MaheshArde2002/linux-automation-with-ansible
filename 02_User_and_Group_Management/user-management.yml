@@ -1,0 +1,14 @@
+---
+- name: User Management
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create Linux User
+      user:
+        name: Sagar
+        comment: New user adding
+        shell: /bin/bash
+        group: admin
+
+        

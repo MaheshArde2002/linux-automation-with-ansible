@@ -1,0 +1,32 @@
+---
+- name: Setup Apache and Firewall
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install Apache and UFW
+      apt:
+        name:
+          - apache2
+          - ufw
+        state: present
+        update_cache: yes
+
+    - name: Start Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Allow HTTP port
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+
+    - name: Enable UFW firewall
+      ufw:
+        state: enabled
+        policy: deny
+        

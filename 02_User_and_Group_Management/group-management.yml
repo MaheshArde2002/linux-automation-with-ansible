@@ -1,0 +1,17 @@
+---
+- name: Create User and Group
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create developers group
+      group:
+        name: developers
+        state: present
+
+    - name: Create linux user
+      user:
+        name: Ankit
+        group: developers
+        state: present
+        

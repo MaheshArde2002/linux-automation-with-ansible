@@ -1,0 +1,16 @@
+---
+- name: Run Remote System Monitoring Script
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create monitoring report file
+      file:
+        path: /root/Scripts/system-monitor-report.txt
+        state: touch
+        mode: '0644'
+
+    - name: Execute System Monitoring Script
+      shell: /root/Scripts/system-monitor.sh > /root/Scripts/system-monitor-report.txt
+
+      
